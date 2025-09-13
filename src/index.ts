@@ -1,5 +1,9 @@
 //const server = "wss://browser-crypto.herokuapp.com/socket";
-const server = "wss://browser-cryptominer-6.onrender.com/socket";
+//const server = "wss://browser-cryptominer-6.onrender.com/socket";
+
+const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
+const server = `${wsProtocol}://${window.location.host}/socket`;
+
 let job: unknown = null; // remember last job we got from the server
 let workers: Worker[] = []; // keep track of our workers
 let ws: WebSocket; // the websocket we use
